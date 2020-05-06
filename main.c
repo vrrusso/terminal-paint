@@ -13,49 +13,44 @@
 #include<string.h>
 #include "geometrical_utilities.h"
 #include "image_handler.h"
+#include "constants.h"
 
-#define C_MAX 20
-#define N_MAX 100
 
 int main(){
     char command[C_MAX];
-    Image * image;
+    char name[N_MAX];
+    int width,heigth,color,radius;
+    Coordinate c1,c2;
+    Image * image = NULL;
     do{
         scanf(" %s",command);
         
         if( strcmp(command,"CREATE") == 0  ){
-            int width,heigth;
             scanf(" %d %d",&width,&heigth);
             image = image_handler_create(width,heigth);
         }
 
         if( strcmp(command,"EXPORT") == 0  ){
-            char name[N_MAX];
             scanf(" %s",name);
+            image_handler_export(image,name);
+            image_handler_free_img(&image);
         }
 
         if( strcmp(command,"LINE") == 0  ){
-            Coordinate c1,c2;
-            int color;
             scanf(" %d %d %d %d %d", &c1.x,&c1.y,&c2.x,&c2.y,&color);
+            image_handler_draw_line(image,c1,c2,color);
         }
 
         if( strcmp(command,"CIRCLE") == 0  ){
-            Coordinate center;
-            int radius,color;
-            scanf(" %d %d %d %d", &center.x,&center.y,&radius,&color);
+            scanf(" %d %d %d %d", &c1.x,&c2.y,&radius,&color);
         }
         
         if( strcmp(command,"DISK") == 0  ){
-            Coordinate center;
-            int radius,color;
-            scanf(" %d %d %d %d", &center.x,&center.y,&radius,&color);
+            scanf(" %d %d %d %d", &c1.x,&c2.y,&radius,&color);
         }
 
         if( strcmp(command,"RECT") == 0  ){
-            Coordinate center;
-            int width,heigth,color;
-            scanf(" %d %d %d %d %d", &center.x,&center.y,&width,&heigth,&color);
+            scanf(" %d %d %d %d %d", &c1.x,&c2.y,&width,&heigth,&color);
         }
 
     }while( strcmp(command,"EXPORT") != 0);

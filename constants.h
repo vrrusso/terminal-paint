@@ -1,0 +1,15 @@
+#ifndef CONSTANTS_H
+
+#define CONSTANTS_H
+
+#define C_MAX 20
+#define N_MAX 100
+
+#define MAGIC_NUMBER "P2"
+
+#define MINIMUM_PARAMETER 0.0001
+#define MAX_PARAMETER 1
+
+#define NUMBER_OF_COORDINATES (int)(MAX_PARAMETER/MINIMUM_PARAMETER)
+
+#endif

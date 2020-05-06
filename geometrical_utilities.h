@@ -1,6 +1,12 @@
-#ifndef GEOMETRICAL_H
 
+
+
+
+
+#ifndef GEOMETRICAL_H
 #define GEOMETRICAL_H
+#include "constants.h"
+
 
 typedef struct coordinate_{
     int x;
@@ -9,6 +15,7 @@ typedef struct coordinate_{
 
 
 
+Coordinate * geometrical_utilities_line(Coordinate c1,Coordinate c2);
 
 
 
