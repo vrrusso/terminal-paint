@@ -13,6 +13,12 @@ struct image_{
     int heigth;
 };
 
+void set_pixel(Image * img,Coordinate position ,int color){
+    if( img!=NULL  && position.x>0&&position.x<img->width  &&  position.y>0&&position.y<img->heigth ){
+        img->pixel_intensities[position.x][position.y] = color;
+    }
+}
+
 Image * image_handler_create(int width,int heigth){
     if(width <= 0 || heigth <=0 ){
         printf("FATAL ERROR-Tamanho da imagem inválido!\n");
@@ -63,10 +69,11 @@ void image_handler_free_img(Image ** img){
 }
 
 void image_handler_draw_line(Image * img, Coordinate c1,Coordinate c2,int color){
-    Coordinate * line = geometrical_utilities_line(c1,c2);
-    for(int i = 0;i<NUMBER_OF_COORDINATES;i++){
-        if(line[i].x>0&&line[i].x<img->width  &&  line[i].y>0&&line[i].y<img->heigth )
-            img->pixel_intensities[line[i].x][line[i].y] = color;
+    if(img != NULL){
+        Coordinate * line = geometrical_utilities_line(c1,c2);
+        for(int i = 0;i<NUMBER_OF_COORDINATES;i++){
+            set_pixel(img,line[i],color);
+        }
+        free(line);
     }
-    free(line);
 }
