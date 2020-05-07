@@ -50,7 +50,8 @@ int main(){
         }
 
         if( strcmp(command,"RECT") == 0  ){
-            scanf(" %d %d %d %d %d", &c1.x,&c2.y,&width,&heigth,&color);
+            scanf(" %d %d %d %d %d", &c1.x,&c1.y,&width,&heigth,&color);
+            image_handler_draw_rect(image,c1,width,heigth,color);
         }
 
     }while( strcmp(command,"EXPORT") != 0);

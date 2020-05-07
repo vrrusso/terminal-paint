@@ -14,8 +14,8 @@ struct image_{
 };
 
 void set_pixel(Image * img,Coordinate position ,int color){
-    if( img!=NULL  && position.x>0&&position.x<img->width  &&  position.y>0&&position.y<img->heigth ){
-        img->pixel_intensities[position.x][position.y] = color;
+    if( img!=NULL  && position.x>= 0&&position.x<img->width  &&  position.y>= 0&&position.y<img->heigth ){
+        img->pixel_intensities[position.y][position.x] = color;
     }
 }
 
@@ -25,14 +25,18 @@ Image * image_handler_create(int width,int heigth){
         return NULL;
     }
     Image * image = (Image *) malloc(sizeof(Image));
+    image->width = width;
+    image->heigth = heigth;
+    Coordinate position;position.x=0;position.y=0;
     image->pixel_intensities = (int **)malloc(sizeof(int *)*heigth);
     for(int i=0;i<heigth;i++){
         image->pixel_intensities[i] = (int *) malloc(width*sizeof(int));
-        for(int j = 0;j<width;j++)
-            image->pixel_intensities[i][j] = 255;
+        for(int j = 0;j<width;j++){
+            position.x = j;
+            position.y = i;
+            set_pixel(image,position,255);
+        }
     }
-    image->width = width;
-    image->heigth = heigth;
     return image;
 }
 
@@ -71,9 +75,20 @@ void image_handler_free_img(Image ** img){
 void image_handler_draw_line(Image * img, Coordinate c1,Coordinate c2,int color){
     if(img != NULL){
         Coordinate * line = geometrical_utilities_line(c1,c2);
-        for(int i = 0;i<NUMBER_OF_COORDINATES;i++){
+        for(int i = 0;i<NUMBER_OF_LINE_COORDINATES;i++){
             set_pixel(img,line[i],color);
         }
         free(line);
+    }
+}
+
+
+void image_handler_draw_rect(Image * img, Coordinate center,int width, int heigth,int color){
+    if(img != NULL){
+        Coordinate * rect = geometrical_utilities_rect(center,width,heigth);
+        for(int i = 0;i<NUMBER_OF_LINE_COORDINATES*heigth;i++){
+            set_pixel(img,rect[i],color);
+        }
+        free(rect);
     }
 }
