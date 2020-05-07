@@ -62,5 +62,8 @@ void image_handler_draw_rect(Image * img, Coordinate center,int width, int heigt
 void image_handler_free_img(Image ** img);
 
 
+void image_handler_draw_circle(Image * img,Coordinate center,int radius,int color);
+
+void image_handler_draw_disk(Image * img,Coordinate center,int radius,int color);
 
 #endif

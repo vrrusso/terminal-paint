@@ -42,11 +42,13 @@ int main(){
         }
 
         if( strcmp(command,"CIRCLE") == 0  ){
-            scanf(" %d %d %d %d", &c1.x,&c2.y,&radius,&color);
+            scanf(" %d %d %d %d", &c1.x,&c1.y,&radius,&color);
+            image_handler_draw_circle(image,c1,radius,color);
         }
         
         if( strcmp(command,"DISK") == 0  ){
-            scanf(" %d %d %d %d", &c1.x,&c2.y,&radius,&color);
+            scanf(" %d %d %d %d", &c1.x,&c1.y,&radius,&color);
+            image_handler_draw_disk(image,c1,radius,color);
         }
 
         if( strcmp(command,"RECT") == 0  ){

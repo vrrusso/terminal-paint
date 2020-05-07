@@ -45,6 +45,16 @@ Coordinate * geometrical_utilities_rect(Coordinate center,int width,int heigth){
 
 }
 
+Coordinate * geometrical_utilities_circle(Coordinate center,int radius){
+    Coordinate * circle = (Coordinate*)malloc(sizeof(Coordinate)*NUMBER_OF_CIRCLE_COORDINATES);
+    double parameter = CIRCLE_PARAMETER;
+    for(int i = 0 ;i<NUMBER_OF_CIRCLE_COORDINATES;i++){
+        set_coordinate(&circle[i],center.x+(int)(radius*sin(parameter)),center.y+(int)(radius*cos(parameter)));
+        parameter+=CIRCLE_PARAMETER;
+    }
+    return circle;
+}
+
 void set_coordinate(Coordinate * c, int x, int y){
         c->x = x;
         c->y = y;

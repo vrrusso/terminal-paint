@@ -92,3 +92,21 @@ void image_handler_draw_rect(Image * img, Coordinate center,int width, int heigt
         free(rect);
     }
 }
+
+void image_handler_draw_circle(Image * img,Coordinate center,int radius,int color){
+    if(img!=NULL){
+        Coordinate * circle = geometrical_utilities_circle(center,radius);
+        for(int i = 0;i<NUMBER_OF_CIRCLE_COORDINATES;i++){
+            set_pixel(img,circle[i],color);
+        }
+        free(circle);
+    }
+}
+
+void image_handler_draw_disk(Image * img,Coordinate center,int radius,int color){
+    if(img != NULL){
+        for(int i=0;i<=radius;i++){
+            image_handler_draw_circle(img,center,i,color);
+        }
+    }
+}

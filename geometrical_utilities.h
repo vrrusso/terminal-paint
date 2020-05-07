@@ -24,6 +24,7 @@ void set_coordinate(Coordinate * c, int x, int y);
 void coordinate_atribution(Coordinate   * c1, Coordinate * c2);
 
 
+Coordinate * geometrical_utilities_circle(Coordinate center,int radius);
 
 
 
