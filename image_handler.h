@@ -62,8 +62,24 @@ void image_handler_draw_rect(Image * img, Coordinate center,int width, int heigt
 void image_handler_free_img(Image ** img);
 
 
+/**
+ * @brief Desenha um círculo centrado em center de raio radius e cor color
+ * 
+ * @param img a imagem
+ * @param center centro
+ * @param radius raio
+ * @param color cor
+ */
 void image_handler_draw_circle(Image * img,Coordinate center,int radius,int color);
 
+/**
+ * @brief Desenha um disco centrado em center de raio radius e cor color
+ * 
+ * @param img a imagem
+ * @param center o centro
+ * @param radius raio
+ * @param color cor
+ */
 void image_handler_draw_disk(Image * img,Coordinate center,int radius,int color);
 
 #endif
